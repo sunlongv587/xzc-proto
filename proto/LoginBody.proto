@@ -1,0 +1,18 @@
+syntax = "proto3";
+package protocol;
+
+//optimize_for 加快解析的速度
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "xzc.server.proto";
+
+// 请求实体
+message LoginRequestBody{
+  string username = 1;
+  string token = 2;
+}
+
+message LoginResponseBody{
+  bool success = 1;
+  string message = 2;
+}
