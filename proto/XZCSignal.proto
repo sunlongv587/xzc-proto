@@ -12,5 +12,5 @@ option java_package = "xzc.server.proto";
 // 返回实体
 message XZCSignal {
   XZCCommand command = 1; // 请求命令
-  map<string, google.protobuf.Any> body = 2;
+  google.protobuf.Any body = 2;
 }

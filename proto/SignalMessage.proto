@@ -16,5 +16,5 @@ message SignalMessage {
   MessageType type = 3; // 消息类型
   string version = 4; // 版本
   int64 timestamp = 5; // 时间戳（毫秒)
-  map<string, google.protobuf.Any> payload = 6; // 消息体
+  google.protobuf.Any payload = 6; // 消息体
 }
