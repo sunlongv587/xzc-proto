@@ -10,4 +10,6 @@ option java_package = "xzc.server.proto";
 enum XZCCommand {
   LOGIN_REQUEST = 0;
   LOGIN_RESPONSE = 1;
+  QUICK_JOIN_ROOM_REQUEST = 2;
+  QUICK_JOIN_ROOM_RESPONSE = 3;
 }
