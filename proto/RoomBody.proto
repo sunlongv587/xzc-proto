@@ -1,0 +1,44 @@
+syntax = "proto3";
+package protocol;
+
+import "RoomType.proto";
+
+//optimize_for 加快解析的速度
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "xzc.server.proto";
+
+// 请求实体
+message QuickJoinRoomRequest {
+  RoomType roomType = 1;
+  string token = 2;
+}
+
+message QuickJoinRoomResponse {
+  int64 roomId = 1;
+  string message = 2;
+  map<int64, Participant> participants = 3;
+}
+
+message Participant {
+  int64 uid = 1; // 用户id
+  string nickname = 2; // 昵称
+  string avatar = 3; // 头像
+  double beans = 4; // 资产
+  ParticipantState state = 5;
+  ParticipantEvent event  = 6;
+
+}
+
+enum ParticipantState {
+  IDLE = 0; // 空闲
+  PLAYING = 1; // 准备游戏
+  IN_PLAY = 2; // 游戏中
+}
+
+enum ParticipantEvent {
+    NONE = 0;
+    JOIN = 1;
+    READY = 2;
+    CANCEL_READY = 3;
+}
