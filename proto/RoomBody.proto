@@ -20,6 +20,26 @@ message QuickJoinRoomResponse {
   map<int64, Participant> participants = 3;
 }
 
+message ReadyRequest {
+  int64 roomId = 1;
+}
+
+message ReadyResponse {
+  int64 roomId = 1;
+  string message = 2;
+  map<int64, Participant> participants = 3;
+}
+
+message CancelReadyRequest {
+  int64 roomId = 1;
+}
+
+message CancelReadyResponse {
+  int64 roomId = 1;
+  string message = 2;
+  map<int64, Participant> participants = 3;
+}
+
 message Participant {
   int64 uid = 1; // 用户id
   string nickname = 2; // 昵称
@@ -41,4 +61,5 @@ enum ParticipantEvent {
     JOIN = 1;
     READY = 2;
     CANCEL_READY = 3;
+
 }

@@ -1,0 +1,26 @@
+syntax = "proto3";
+package protocol;
+
+//optimize_for 加快解析的速度
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "xzc.server.proto";
+
+// 卡牌类型
+enum XZCCard {
+  CRAD_1 = 0;
+  CRAD_2 = 1;
+  CRAD_3 = 2;
+  CRAD_4 = 3;
+  CRAD_5 = 4;
+  CRAD_6 = 5;
+  CRAD_7 = 6;
+  CRAD_8 = 7;
+  CRAD_9 = 8;
+  CRAD_10 = 9;
+  CRAD_11 = 10;
+  CRAD_12 = 11;
+  CRAD_13 = 12;
+  CRAD_14 = 13;
+  CRAD_15 = 14;
+}
