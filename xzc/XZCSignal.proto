@@ -2,17 +2,15 @@ syntax = "proto3";
 package protocol;
 
 import "google/protobuf/any.proto";
-import "MessageType.proto";
+import "xzc/XZCCommand.proto";
 
 //optimize_for 加快解析的速度
 option optimize_for = SPEED;
 option java_multiple_files = true;
 option java_package = "xzc.server.proto";
 
-// 请求实体 type (0: 心跳, 1: 登录)
-message UserInfo {
-  int64 uid = 1; // 用户id
-  string nickname = 2; // 昵称
-  string avatar = 3; // 头像
-  double beans = 4; // 资产
+// 返回实体
+message XZCSignal {
+  XZCCommand command = 1; // 请求命令
+  google.protobuf.Any body = 2;
 }
