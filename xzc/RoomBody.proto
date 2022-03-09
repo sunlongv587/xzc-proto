@@ -49,6 +49,22 @@ message StartResponse {
   int64 gameId = 2;
 }
 
+message QuitRequest {
+  int64 roomId = 1;
+}
+
+message QuitResponse {
+  int64 roomId = 1;
+}
+
+message QuickChangeRequest {
+  int64 oldRoomId = 1;
+}
+
+message QuickChangeResponse {
+  int64 newRoomId = 1;
+}
+
 message Participant {
   int64 uid = 1; // 用户id
   string nickname = 2; // 昵称
