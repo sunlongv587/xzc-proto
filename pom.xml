@@ -6,7 +6,7 @@
 
     <groupId>xzc.proto</groupId>
     <artifactId>xzc-proto</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <protobuf.version>3.5.1</protobuf.version>

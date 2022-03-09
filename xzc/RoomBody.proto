@@ -31,19 +31,10 @@ message QuickJoinRoomResponse {
 
 message ReadyRequest {
   int64 roomId = 1;
+  bool readyOrCancel = 2;
 }
 
 message ReadyResponse {
-  int64 roomId = 1;
-  string message = 2;
-  map<int64, Participant> participants = 3;
-}
-
-message CancelReadyRequest {
-  int64 roomId = 1;
-}
-
-message CancelReadyResponse {
   int64 roomId = 1;
   string message = 2;
   map<int64, Participant> participants = 3;
