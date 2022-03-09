@@ -8,6 +8,15 @@ option optimize_for = SPEED;
 option java_multiple_files = true;
 option java_package = "xzc.server.proto";
 
+message SyncParticipantRequest {
+  int64 roomId = 1;
+}
+
+message SyncParticipantResponse {
+  int64 roomId = 1;
+  map<int64, Participant> participants = 3;
+}
+
 // 请求实体
 message QuickJoinRoomRequest {
   RoomType roomType = 1;
@@ -40,6 +49,15 @@ message CancelReadyResponse {
   map<int64, Participant> participants = 3;
 }
 
+message StartRequest {
+  int64 roomId = 1;
+}
+
+message StartResponse {
+  int64 roomId = 1;
+  int64 gameId = 2;
+}
+
 message Participant {
   int64 uid = 1; // 用户id
   string nickname = 2; // 昵称
@@ -47,7 +65,7 @@ message Participant {
   double beans = 4; // 资产
   ParticipantState state = 5;
   ParticipantEvent event  = 6;
-
+  bool change = 7;
 }
 
 enum ParticipantState {
@@ -61,5 +79,6 @@ enum ParticipantEvent {
     JOIN = 1;
     READY = 2;
     CANCEL_READY = 3;
-
+    START = 4;
+    QUIT = 5;
 }
