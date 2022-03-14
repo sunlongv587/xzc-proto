@@ -1,20 +1,20 @@
 syntax = "proto3";
 package protocol;
 
-import "xzc/RoomType.proto";
+import "xzc/room_type.proto";
+import "xzc/room_data.proto";
 
 //optimize_for 加快解析的速度
 option optimize_for = SPEED;
 option java_multiple_files = true;
 option java_package = "xzc.server.proto";
 
-message SyncParticipantRequest {
+message SyncRoomDataRequest {
   int64 roomId = 1;
 }
 
-message SyncParticipantResponse {
-  int64 roomId = 1;
-  map<int64, Participant> participants = 3;
+message SyncRoomDataResponse {
+  RoomData roomData = 2;
 }
 
 // 请求实体
@@ -26,7 +26,7 @@ message QuickJoinRoomRequest {
 message QuickJoinRoomResponse {
   int64 roomId = 1;
   string message = 2;
-  map<int64, Participant> participants = 3;
+  map<int64, RoomMember> roomMembers = 3;
 }
 
 message ReadyRequest {
@@ -37,7 +37,7 @@ message ReadyRequest {
 message ReadyResponse {
   int64 roomId = 1;
   string message = 2;
-  map<int64, Participant> participants = 3;
+  map<int64, RoomMember> roomMembers = 3;
 }
 
 message StartRequest {
@@ -63,29 +63,4 @@ message QuickChangeRequest {
 
 message QuickChangeResponse {
   int64 newRoomId = 1;
-}
-
-message Participant {
-  int64 uid = 1; // 用户id
-  string nickname = 2; // 昵称
-  string avatar = 3; // 头像
-  double beans = 4; // 资产
-  ParticipantState state = 5;
-  ParticipantEvent event  = 6;
-  bool change = 7;
-}
-
-enum ParticipantState {
-  IDLE = 0; // 空闲
-  PLAYING = 1; // 准备游戏
-  IN_PLAY = 2; // 游戏中
-}
-
-enum ParticipantEvent {
-    NONE = 0;
-    JOIN = 1;
-    READY = 2;
-    CANCEL_READY = 3;
-    START = 4;
-    QUIT = 5;
 }

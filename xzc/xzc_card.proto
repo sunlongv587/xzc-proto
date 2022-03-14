@@ -7,7 +7,7 @@ option java_multiple_files = true;
 option java_package = "xzc.server.proto";
 
 // 卡牌类型
-enum XZCCard {
+enum XzcCard {
   CRAD_1 = 0;
   CRAD_2 = 1;
   CRAD_3 = 2;

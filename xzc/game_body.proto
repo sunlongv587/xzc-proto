@@ -1,0 +1,67 @@
+syntax = "proto3";
+package protocol;
+
+import "xzc/xzc_card.proto";
+import "xzc/game_data.proto";
+
+//optimize_for 加快解析的速度
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "xzc.server.proto";
+
+
+message TakeCardRequest {
+  int64 gameId = 1;
+}
+
+message TakeCardResponse {
+  XzcCard card = 1;
+  int32 point = 2;
+}
+
+message DiscardRequest {
+  int64 gameId = 1;
+  XzcCard card = 2;
+}
+
+message DiscardResponse {
+
+}
+
+message ChangeXzcCardRequest {
+  int64 gameId = 1;
+}
+
+message ChangeXzcCardResponse {
+  XzcCard oldCard = 1;
+  int32 oldPoint = 2;
+  XzcCard newCard = 3;
+  int32 newPoint = 4;
+}
+
+message BettingRequest {
+  int64 gameId = 1;
+}
+
+message BettingResponse {
+  bool success = 1;
+  int32 coins = 2;
+  int32 balance = 3;
+}
+
+message PassRequest {
+  int64 gameId = 1;
+}
+
+message PassResponse {
+
+}
+
+message SyncGameDataRequest {
+  int64 gameId = 1;
+}
+
+message SyncGameDataResponse {
+  int64 gameId = 1;
+  GameData gameDate = 2;
+}

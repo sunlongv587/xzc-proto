@@ -1,0 +1,53 @@
+syntax = "proto3";
+package protocol;
+
+import "xzc/room_type.proto";
+import "xzc/xzc_card.proto";
+
+//optimize_for 加快解析的速度
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "xzc.server.proto";
+
+
+message GameData {
+  int64 gameId = 1;
+  map<int64, Gamer> gamers = 2;
+}
+
+message Gamer {
+  int64 uid = 1; // 用户id
+  string nickname = 2; // 昵称
+  string avatar = 3; // 头像
+  double coins = 4; // 筹码
+  GamerState state = 5;
+  GamerEvent event = 6;
+  bool change = 7;
+  XzcCard card = 8;
+}
+
+enum GamerState {
+  // 等待中
+  Waiting = 0;
+  // 托管中
+  Entrusted = 1;
+  // 行动中
+  InAction = 2;
+  // 选择中
+  Picking = 3;
+  // 加入赌局
+  InBet = 4;
+}
+
+enum GamerEvent {
+  // 抓牌
+  TakeCard = 0;
+  // 弃牌
+  DiscardCard = 1;
+  // 变更小早川牌
+  ChangeXzcCard = 2;
+  // 下注
+  Betting = 3;
+  // 不下注
+  Pass = 4;
+}
