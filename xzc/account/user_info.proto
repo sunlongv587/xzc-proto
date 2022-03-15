@@ -2,12 +2,12 @@ syntax = "proto3";
 package protocol;
 
 import "google/protobuf/any.proto";
-import "xzc/message_type.proto";
+import "xzc/common/message_type.proto";
 
 //optimize_for 加快解析的速度
 option optimize_for = SPEED;
 option java_multiple_files = true;
-option java_package = "xzc.server.proto";
+option java_package = "xzc.server.proto.account";
 
 // 请求实体 type (0: 心跳, 1: 登录)
 message UserInfo {

@@ -4,9 +4,11 @@ package protocol;
 //optimize_for 加快解析的速度
 option optimize_for = SPEED;
 option java_multiple_files = true;
-option java_package = "xzc.server.proto";
+option java_package = "xzc.server.proto.room";
 
 // 房间类型
 enum RoomType {
-  CLASSIC_3_6 = 0;
+  ROOM_TYPE_UNSPECIFIED = 0;
+  // 经典3-6人场
+  ROOM_TYPE_CLASSIC_3_6 = 1;
 }

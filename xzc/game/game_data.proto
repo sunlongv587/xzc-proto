@@ -1,0 +1,58 @@
+syntax = "proto3";
+package protocol;
+
+import "xzc/game/xzc_card.proto";
+
+//optimize_for 加快解析的速度
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "xzc.server.proto.game";
+
+
+message GameData {
+  int64 game_id = 1;
+  map<int64, Gamer> gamer_map = 2;
+  int32 card_count = 3;
+  repeated XzcCard discard_pile = 4;
+}
+
+message Gamer {
+  int64 uid = 1; // 用户id
+  string nickname = 2; // 昵称
+  string avatar = 3; // 头像
+  double coins = 4; // 筹码
+  GamerState state = 5;
+  GamerEvent event = 6;
+  bool change = 7;
+  XzcCard card = 8;
+}
+
+enum GamerState {
+  GAMER_STATE_UNSPECIFIED = 0;
+  // 等待
+  GAMER_STATE_WAIT = 1;
+  // 行动
+  GAMER_STATE_ACTION = 2;
+  // 弃牌
+  GAMER_STATE_DISCARD = 3;
+  // 投注
+  GAMER_STATE_BET = 4;
+  // 加入赌局
+  GAMER_STATE_IN_BET = 5;
+}
+
+enum GamerEvent {
+  GAMER_EVENT_UNSPECIFIED = 0;
+  // 抓牌
+  GAMER_EVENT_TAKE_CARD = 1;
+  // 弃牌
+  GAMER_EVENT_DISCARD_CARD = 2;
+  // 变更小早川牌
+  GAMER_EVENT_CHANGE_XZC_CARD = 3;
+  // 下注
+  GAMER_EVENT_BETTING = 4;
+  // 不下注
+  GAMER_EVENT_PASS = 5;
+  // 回合结算
+  GAMER_EVENT_ROUND_SETTLE = 6;
+}

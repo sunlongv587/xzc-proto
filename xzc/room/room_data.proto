@@ -1,0 +1,38 @@
+syntax = "proto3";
+package protocol;
+
+//optimize_for 加快解析的速度
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "xzc.server.proto.room";
+
+message RoomData {
+  int64 room_id = 1;
+  map<int64, RoomMember> member_map = 2;
+}
+
+message RoomMember {
+  int64 uid = 1; // 用户id
+  string nickname = 2; // 昵称
+  string avatar = 3; // 头像
+  double beans = 4; // 资产
+  MemberState state = 5;
+  MemberEvent event = 6;
+  bool change = 7;
+}
+
+enum MemberState {
+  MEMBER_STATE_UNSPECIFIED = 0; // 无特殊含义
+  MEMBER_STATE_IDLE = 1; // 无特殊含义
+  MEMBER_STATE_PLAYING = 2; // 准备游戏
+  MEMBER_STATE_IN_PLAY = 3; // 游戏中
+}
+
+enum MemberEvent {
+  MEMBER_EVENT_UNSPECIFIED = 0;
+  MEMBER_EVENT_JOIN = 1;
+  MEMBER_EVENT_READY = 2;
+  MEMBER_EVENT_CANCEL_READY = 3;
+  MEMBER_EVENT_START = 4;
+  MEMBER_EVENT_QUIT = 5;
+}

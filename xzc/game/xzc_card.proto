@@ -1,0 +1,27 @@
+syntax = "proto3";
+package protocol;
+
+//optimize_for 加快解析的速度
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_package = "xzc.server.proto.game";
+
+// 卡牌类型
+enum XzcCard {
+  XZC_CRAD_UNSPECIFIED = 0;
+  XZC_CRAD_1 = 1;
+  XZC_CRAD_2 = 2;
+  XZC_CRAD_3 = 3;
+  XZC_CRAD_4 = 4;
+  XZC_CRAD_5 = 5;
+  XZC_CRAD_6 = 6;
+  XZC_CRAD_7 = 7;
+  XZC_CRAD_8 = 8;
+  XZC_CRAD_9 = 9;
+  XZC_CRAD_10 = 10;
+  XZC_CRAD_11 = 11;
+  XZC_CRAD_12 = 12;
+  XZC_CRAD_13 = 13;
+  XZC_CRAD_14 = 14;
+  XZC_CRAD_15 = 15;
+}

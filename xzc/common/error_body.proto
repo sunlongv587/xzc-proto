@@ -1,12 +1,12 @@
 syntax = "proto3";
 package protocol;
 
-import "xzc/xzc_error_code.proto";
+import "xzc/common/xzc_error_code.proto";
 
 //optimize_for 加快解析的速度
 option optimize_for = SPEED;
 option java_multiple_files = true;
-option java_package = "xzc.server.proto";
+option java_package = "xzc.server.proto.common";
 
 message ErrorResponse {
   ErrorCode code = 1;
