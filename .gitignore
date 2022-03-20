@@ -27,6 +27,7 @@ hs_err_pid*
 
 # maven
 target
+js-build
 
 # npm
 node_modules
