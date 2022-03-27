@@ -8,7 +8,7 @@ xzc-proto
 protoc --proto_path=./ --js_out=import_style=commonjs,binary:build ./xzc/common/* ./xzc/account/* ./xzc/room/* ./xzc/game/* 
 ```
 
-### protobufjs（无法支持Any对象的传输，弃用）
+### protobufjs（无法支持Any对象的传输）
 ### 开源地址
 https://github.com/protobufjs/protobuf.js/tree/master/cli#pbts-for-typescript
 ### 教程
